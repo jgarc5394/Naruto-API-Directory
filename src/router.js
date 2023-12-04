@@ -10,10 +10,11 @@ import NotFound from '@/components/NotFound.vue'
 
 const routes = [
   { path: '/Naruto-API-Directory/', name: 'Home', component: MainPage },
-  { path: '/login', name: "Login", component: LoginPage },
+  { path: '/login', name: 'Login', component: LoginPage },
   { path: '/settings', name: 'Settings', component: SettingsPage,
     meta: { requiresAuth: true }},
-  { path: '/:pathMatch(.*)*', name: "NotFound", component: NotFound},
+  { path: '/:pathMatch(.*)*', name: "NotFound", component: NotFound },
+  { path: '/api/characters/:id', name: 'Character', component: () => import('@/views/CharacterPage.vue')},
 ]
 
 const router = createRouter({

@@ -6,6 +6,7 @@ const pages = ref(1)
 const loading = ref(false)
 const activePage = ref(1)
 const pageSize = ref(8)
+const currentCharacter = ref(null)
 
 const api = axios.create({
     baseURL: import.meta.env.VITE_API_URL,
@@ -35,7 +36,7 @@ const getCharacter = async (id) => {
   }
 
 const useAPI = () => {
-    return { characters, pages, activePage, loading, pageSize, getCharacters, getCharacter }
+    return { characters, pages, activePage, loading, pageSize, getCharacters, getCharacter, currentCharacter }
 }
 
 export default useAPI
