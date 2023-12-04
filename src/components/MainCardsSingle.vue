@@ -1,49 +1,43 @@
 <script setup>
     import { ref } from 'vue'
-    import { faker } from '@faker-js/faker'
 
     import useAPI from '@/composables/useAPI'
-    const { getDepartment } = useAPI()
 
     const selectCard = () => {
-        console.log(`${props.employee.name} selected`)
+        console.log(`${props.character.name} selected`)
     }
 
     const props = defineProps({
-        employee: {
+        character: {
             type: Object,
             required: true,
             default: () => {
                 return {
                     createdAt: '2020-01-01',
-                    departmentId: '123',
-                    email: 'john.doe@example.com',
-                    employeeId: '123',
+                    characterId: '123',
                     name: 'John Doe',
-                    quote: 'Really Cool quote',
-                    title: 'Position',
+                    image: 'https://www.example.com',
                     updatedAt: '2022-01-01',
                 }
             },    
         },
     })
-
-    const departmentResponse = await getDepartment(props.employee.departmentId)
-    const department = ref(departmentResponse)
 </script>
 
 <template>
-    <div class="card" @clicked="selectCard">
-        <div class="card-image">
-            <img :src="faker.internet.avatar()" alt="" srcset="" />
-        </div>
-        <div class="card-details">
-            <p class="card-details-name">{{ props.employee.name }}</p>
-            <p class="card-details-job">{{ props.employee.title }}, {{ department.name }}</p>
-            <p class="card-details-email">{{ faker.internet.exampleEmail(firstName, lastName) }}</p>
-            <p class="card-details-quote">"{{ props.employee.quote }}"</p>
-        </div>      
+  <RouterLink v-if="props.character.characterId" :to="`/api/characters/${props.character.characterId}`">
+  <div class="card" @click="selectCard">
+    <div class="card-image">
+      <img :src="props.character.image" alt="" srcset="" />
     </div>
+    <div class="card-details">
+      <p class="card-details-name font-poppins">{{ props.character.name }}</p>
+      <p class="card-details-clan font-poppins">{{ props.character.clan }}</p>
+      <p class="card-details-village font-poppins">{{ props.character.village }}</p>  
+      <p class="card-details-quote font-poppins">"{{ props.character.quote }}"</p>  
+    </div>
+  </div>
+</RouterLink>
 </template>
 
 <style scoped lang="postcss">
@@ -60,10 +54,10 @@
             &-name {
                 @apply text-3xl font-thin tracking-wide text-orange-800;
             }
-            &-job {
+            &-clan {
                 @apply -mt-2 text-xs font-bold text-orange-600;
             }
-            &-email {
+            &-village {
                 @apply text-sm text-orange-500;
             }
             &-quote {

@@ -1,6 +1,6 @@
 <template>
     <div class="wrapper">
-        <input type="text" placeholder="Search Staff Member" class="search" />
+        <input type="text" placeholder="Search Character" class="search" />
         <span class="icon">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" 
             stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
