@@ -37,8 +37,9 @@ onUnmounted(() => {
         {{ currentCharacter.name }}
       </h1>
       <h2 class="text-orange-600 text-2xl font-bold">List of Jutsu</h2>
-      <p class="text-orange-500 text-xl">{{ currentCharacter.jutsus[0] }}</p>
-      <p class="text-orange-500 text-xl">{{ currentCharacter.jutsus[1] }}</p>
+      <div v-for="jutsu in currentCharacter.jutsus">
+        <p class="text-orange-500 text-xl">{{ jutsu }}</p>
+      </div>
     </div>
   </main>
 </template>
