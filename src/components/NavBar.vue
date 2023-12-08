@@ -16,8 +16,8 @@
             <div class="menu">
                 <p v-show="isAuthenticated" class="px-4 py-4">Welcome Back <strong><i>{{ user?.email }}</i></strong></p>
                 <div v-if="isAuthenticated">
-                    <RouterLink :to="{ name: 'Settings' }" href="#" class="menu-item">Settings</RouterLink>
-                    <button href="#" class="menu-logout" @click="logout">Logout</button>
+                    <RouterLink :to="{ name: 'Settings' }" class="menu-item">Settings</RouterLink>
+                    <button class="menu-logout" @click="logout">Logout</button>
                 </div> 
                 <div v-else>
                     <RouterLink :to="{ name: 'Login' }" href="#" class="menu-login">Login</RouterLink>
