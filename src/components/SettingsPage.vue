@@ -27,13 +27,25 @@ const addCharacter = async () => {
     quote: characterQuote.value,
     image: characterImage.value
   })
-
+  resetForm()
 }
+
+const resetForm = () => {
+  var element = document.getElementById("api_form");
+  element.reset()
+  characterName.value = ""
+  characterClan.value = ""
+  characterVillage.value = ""
+  characterJutsus.value = ""
+  characterQuote.value = ""
+  characterImage.value = ""
+}
+
 </script>
 
 <template>
   
-  <form class="login-form" @submit.prevent="addCharacter">
+  <form id="api_form" class="login-form" @submit.prevent="addCharacter" >
     <h1 class="title">Add Character Form</h1>
     <input v-model="characterName" type="text" placeholder="name" />
     <input v-model="characterClan" type="text" placeholder="clan" />
